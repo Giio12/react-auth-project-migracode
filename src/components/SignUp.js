@@ -1,9 +1,11 @@
 import React, {useState} from "react";
+import Home from "./Home";
 
 export default function Login() {
     const [name, setName] = useState('');
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
+    const [update, setUpdate] = useState(true);
     
     const fetchSignUp = async() => {
         const url ="http://localhost:4000/user/sign-up";
@@ -15,12 +17,15 @@ export default function Login() {
         })
         .then(res => res.json())
         .then(data => (data))
+        
     }
     const onClick = (e) =>{
         fetchSignUp();
     }
-    return (
-    <div className="App-Body">
+    if(update){
+
+        return (
+            <div className="App-Body">
         <div className="row" id="">
             <div className=" align-self-center">
                <h1>facebook</h1>
@@ -49,6 +54,8 @@ export default function Login() {
         </div>
     </div>
 
-    );
-  }
+);
+}else{
+    return <Home></Home>
+}}
   
